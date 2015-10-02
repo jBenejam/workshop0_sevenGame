@@ -1,0 +1,78 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <!-- Add your site or application content here -->
+        <h1>Seven Game</h1>
+        <p id="numbers"></p>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.3.min.js"><\/script>')</script>
+        <script src="js/plugins.js"></script>
+        <script src="js/main.js"></script>
+
+       <script type="application/javascript">
+           function endedNumber (n){
+               var len= (n.toString()).length;
+               if (parseInt(n.charAt(len))===7){
+                    return true;
+               }else{
+                   return false;
+               }
+
+           }
+           function multipleNumber(n){
+               var i;
+
+               for (i=0; i<=n; i++){
+                   if (i%7===0 || endedNumber(n)){
+                       numArray.push(i);
+                       console.log(i);
+                   }
+               }
+           }
+           var numArray = [];
+           if (confirm("You want use prompt?")){
+               var num= prompt("Give a number");
+               multipleNumber(num);
+           }else{
+               var btn = document.createElement("button");
+               var inp = document.createElement("input");
+               var t = document.createTextNode("Check");
+               btn.appendChild(t);
+               inp.type = "text";
+               inp.id = "myInput";
+               document.body.appendChild(inp);
+               document.body.appendChild(btn);
+               btn.onclick = function(){
+                   var x = document.getElementById("myInput").value;
+                   multipleNumber(x);
+               };
+           }
+           console.log(numArray.sort());
+           document.getElementById("numbers").innerHTML = numArray;
+           /*for (var x=0; x<numArray.length; x++){
+              document.write(numArray[x] + " ");
+           }*/
+       </script>
+    </body>
+</html>
+
+
